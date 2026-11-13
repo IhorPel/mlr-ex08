@@ -1,0 +1,194 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#153f33">
+  <title>Leaf Lens · four-species classifier</title>
+  <style>
+    :root { color-scheme: light; --ink:#153f33; --muted:#536b60; --paper:#f3f5ed; --line:#d9e1d5; }
+    * { box-sizing:border-box; } body { margin:0; font:16px/1.5 system-ui,sans-serif; color:var(--ink); background:var(--paper); }
+    header { background:var(--ink); color:white; padding:28px max(20px,calc((100vw - 1020px)/2)); }
+    .eyebrow { font-size:12px; letter-spacing:.15em; text-transform:uppercase; opacity:.75; margin:0 0 5px; }
+    h1 { font-size:clamp(32px,7vw,48px); letter-spacing:-.045em; margin:0; line-height:1.15; }
+    header p:last-child { margin:8px 0 0; color:#d6e5d4; }
+    main { max-width:1060px; margin:26px auto; padding:0 20px 30px; }
+    .grid { display:grid; grid-template-columns:minmax(0,1.1fr) minmax(0,1fr); gap:22px; align-items:start; }
+    .card { background:white; border:1px solid var(--line); border-radius:18px; padding:20px; }
+    .preview { width:100%; aspect-ratio:1; background:#e5ebdf; border-radius:12px; overflow:hidden; position:relative; display:grid; place-items:center; }
+    .preview video,.preview img { width:100%; height:100%; object-fit:cover; position:absolute; inset:0; }
+    #empty { padding:35px; text-align:center; color:var(--muted); }
+    #empty strong { display:block; font-size:22px; margin-bottom:8px; color:var(--ink); }
+    .caption { color:var(--muted); font-size:13px; margin:10px 0 16px; }
+    .buttons { display:flex; gap:10px; flex-wrap:wrap; }
+    button,.upload { appearance:none; background:var(--ink); color:white; border:1px solid var(--ink); padding:12px 16px; border-radius:9px; font:600 15px system-ui,sans-serif; cursor:pointer; text-align:center; }
+    button.secondary,.upload { background:white; color:var(--ink); } button:disabled { opacity:.5; cursor:wait; }
+    input[type=file] { width:100%; margin-top:10px; font-size:14px; } select { width:100%; font:inherit; border:1px solid var(--line); border-radius:8px; padding:10px; color:var(--ink); background:white; margin:6px 0 16px; }
+    h2 { font-size:23px; letter-spacing:-.025em; margin:0 0 12px; } h3 { margin:0 0 8px; font-size:17px; }
+    #status { min-height:48px; color:var(--muted); margin:8px 0 20px; font-size:14px; } .error { color:#a23028!important; }
+    .probability { margin:18px 0; } .row { display:flex; justify-content:space-between; gap:12px; margin-bottom:6px; }
+    .name { text-transform:capitalize; } .value { font-variant-numeric:tabular-nums; font-weight:650; }
+    .track { height:10px; background:#edf1e7; border-radius:10px; overflow:hidden; } .fill { height:100%; width:0%; background:#62814e; border-radius:10px; transition:width .2s; }
+    .note { font-size:13px; color:var(--muted); } .below { margin-top:22px; }
+    #checkResult { white-space:pre-wrap; font:13px/1.7 ui-monospace,monospace; overflow-wrap:anywhere; margin-top:12px; }
+    .qr { display:flex; align-items:center; gap:24px; } .qr img { width:140px; height:140px; flex-shrink:0; } a { color:var(--ink); overflow-wrap:anywhere; }
+    [hidden] { display:none!important; } @media(max-width:720px) { .grid { grid-template-columns:1fr; } header { padding:24px 20px; } main { margin-top:20px; } .qr { gap:14px; } .qr img { width:110px; height:110px; } }
+  </style>
+</head>
+<body>
+<header><p class="eyebrow">Exercise 8 · on-device inference</p><h1>Leaf Lens</h1><p>Point your camera at an apple, cherry, chestnut or maple leaf.</p></header>
+<main>
+  <div class="grid">
+    <section class="card" aria-label="Leaf image">
+      <div class="preview"><video id="video" autoplay muted playsinline hidden></video><img id="photo" alt="Selected leaf" hidden><div id="empty"><strong>A leaf, in focus.</strong>Start the rear camera or choose a photo.<br>The whole square is analyzed.</div></div>
+      <p class="caption">The central square is resized to 96 × 96 pixels. Try even light and a clear view of one leaf.</p>
+      <div class="buttons"><button id="start" disabled>Start rear camera</button><button id="stop" class="secondary" hidden>Stop camera</button></div>
+      <label for="upload" class="caption" style="display:block;margin-bottom:5px">Or choose a leaf photo</label><input id="upload" type="file" accept="image/*" disabled>
+    </section>
+    <section class="card" aria-labelledby="predictionHeading">
+      <h2 id="predictionHeading">Four possible species</h2><label for="model">Model</label>
+      <select id="model"><option value="demo">Task 2 · MobileNet demonstration</option><option value="best">Task 4 · selected phone candidate</option></select>
+      <p id="status" role="status" aria-live="polite">Downloading the model and browser runtime…</p>
+      <div id="probabilities" aria-label="Class probabilities"></div>
+      <p class="note">Scores describe only these four classes. Other plants and objects can still receive a high score. This is an educational model, trained on the historical course dataset.</p>
+    </section>
+  </div>
+  <section class="card below"><h3>Check against the notebook</h3><p class="note">Run the saved check image through exactly the same image and tensor processing used for uploaded photos. You can also choose check_image.jpg above.</p><button id="check" class="secondary" disabled>Run check image</button><div id="checkResult" aria-live="polite"></div></section>
+  <section class="card below"><h3>Your image stays in this browser</h3><p class="note">This app does not upload camera frames or selected photos. It downloads the model and local metadata from this site, and ONNX Runtime Web JavaScript and WebAssembly from jsDelivr. Inference runs on your device. Stop closes the camera; leaving the page releases it too.</p></section>
+  <section class="card below qr"><img src="qr.png" alt="QR code opening this Leaf Lens app"><div><h3>Open Leaf Lens on your phone</h3><a id="appLink" href="https://ihorpel.github.io/mlr-ex08/">https://ihorpel.github.io/mlr-ex08/</a><p class="note">Scan this code to open this deployed app.</p></div></section>
+</main>
+<canvas id="canvas" width="96" height="96" hidden></canvas>
+<script src="https://cdn.jsdelivr.net/npm/onnxruntime-web@1.23.2/dist/ort.min.js"></script>
+<script>
+"use strict";
+const $ = id => document.getElementById(id);
+const runtimeBase = "https://cdn.jsdelivr.net/npm/onnxruntime-web@1.23.2/dist/";
+let session = null, info = null, expected = null, stream = null, running = false, busy = false;
+let lastFrame = 0, selectedImage = null;
+const canvas = $("canvas"), context = canvas.getContext("2d", {willReadFrequently:true});
+if(!globalThis.ort) { $("status").textContent="The browser runtime could not be downloaded. Check your connection and reload."; $("status").classList.add("error"); throw new Error("ONNX Runtime Web CDN unavailable"); }
+ort.env.wasm.wasmPaths = runtimeBase;
+ort.env.wasm.numThreads = 1; // No SharedArrayBuffer or cross-origin isolation needed on iPhone.
+
+function status(message, error=false) { $("status").textContent = message; $("status").classList.toggle("error", error); }
+function stopCamera() {
+  running = false;
+  if (stream) stream.getTracks().forEach(track => track.stop());
+  stream = null; $("video").srcObject = null; $("stop").hidden = true; $("start").hidden = false;
+}
+function drawProbabilities(probabilities) {
+  info.classes.forEach((name,i) => {
+    $("prob-"+i).textContent = probabilities[i].toFixed(3);
+    $("fill-"+i).style.width = (100 * probabilities[i]).toFixed(2) + "%";
+  });
+}
+function preprocess(source) {
+  const width = source.videoWidth || source.naturalWidth || source.width;
+  const height = source.videoHeight || source.naturalHeight || source.height;
+  if (!width || !height) throw new Error("The image or camera frame is not ready.");
+  const side = Math.min(width, height), size = info.input_size;
+  canvas.width = size; canvas.height = size;
+  context.imageSmoothingEnabled = true;
+  context.imageSmoothingQuality = "high";
+  context.drawImage(source, (width-side)/2, (height-side)/2, side, side, 0, 0, size, size);
+  const pixels = context.getImageData(0,0,size,size).data;
+  const area = size*size, tensor = new Float32Array(3*area);
+  // RGB channel-first layout: [1,3,H,W], with scaling and normalization in that order.
+  for (let p=0; p<area; p++) for (let channel=0; channel<3; channel++)
+    tensor[channel*area+p] = (pixels[4*p+channel]/255 - info.mean[channel]) / info.std[channel];
+  return new ort.Tensor("float32", tensor, [1,3,size,size]);
+}
+async function classify(source) {
+  const results = await session.run({image: preprocess(source)});
+  const logits = Array.from(results.logits.data), max = Math.max(...logits);
+  const exponentials = logits.map(v=>Math.exp(v-max)), total=exponentials.reduce((a,b)=>a+b,0);
+  const probabilities = exponentials.map(v=>v/total);
+  drawProbabilities(probabilities);
+  return probabilities;
+}
+async function cameraLoop(now) {
+  if (!running) return;
+  if (!busy && now-lastFrame>300 && $("video").readyState>=2) {
+    busy=true; lastFrame=now;
+    try { await classify($("video")); status("Live camera · probabilities update on this device."); }
+    catch(error) { status(error.message,true); stopCamera(); }
+    finally { busy=false; }
+  }
+  if (running) requestAnimationFrame(cameraLoop);
+}
+async function imageFromBlob(blob) {
+  const url=URL.createObjectURL(blob), image=new Image();
+  try { await new Promise((resolve,reject)=>{ image.onload=resolve; image.onerror=()=>reject(new Error("Unable to decode this image. Try a JPEG or PNG photo.")); image.src=url; }); }
+  finally { URL.revokeObjectURL(url); }
+  return image;
+}
+async function showImage(image) {
+  stopCamera(); selectedImage=image;
+  $("photo").hidden=false; $("video").hidden=true; $("empty").hidden=true;
+  // The decoded image remains usable after its temporary URL is revoked.
+  const display=canvas.cloneNode(); display.width=384; display.height=384;
+  const side=Math.min(image.naturalWidth,image.naturalHeight);
+  display.getContext("2d").drawImage(image,(image.naturalWidth-side)/2,(image.naturalHeight-side)/2,side,side,0,0,384,384);
+  $("photo").src=display.toDataURL("image/png");
+  const probabilities=await classify(image); status("Photo processed locally."); return probabilities;
+}
+async function loadModel() {
+  stopCamera();
+  $("start").disabled=$("check").disabled=$("upload").disabled=true;
+  status("Downloading model weights…");
+  while(busy) await new Promise(resolve=>setTimeout(resolve,20));
+  if(session) await session.release();
+  const kind=$("model").value;
+  [info, expected] = await Promise.all([
+    fetch("model_info.json").then(r=>{if(!r.ok)throw new Error("Model metadata unavailable.");return r.json();}),
+    fetch(kind==="best" ? "best_check_expected.json" : "check_expected.json").then(r=>{if(!r.ok)throw new Error("Check probabilities unavailable.");return r.json();})
+  ]);
+  if(info.classes.length!==4 || info.mean.length!==3 || info.std.some(v=>v<=0)) throw new Error("Invalid model metadata.");
+  $("probabilities").replaceChildren();
+  info.classes.forEach((name,i)=>{
+    const block=document.createElement("div"); block.className="probability";
+    const row=document.createElement("div"); row.className="row";
+    const label=document.createElement("span"); label.className="name"; label.textContent=name;
+    const value=document.createElement("span"); value.className="value"; value.id="prob-"+i; value.textContent="—";
+    row.append(label,value); const track=document.createElement("div"); track.className="track";
+    const fill=document.createElement("div"); fill.className="fill"; fill.id="fill-"+i;
+    track.append(fill); block.append(row,track); $("probabilities").append(block);
+  });
+  session=await ort.InferenceSession.create(kind==="best" ? "best_leaf_model.onnx" : "leaf_model.onnx", {executionProviders:["wasm"]});
+  $("start").disabled=$("check").disabled=$("upload").disabled=false;
+  status("Ready. Start the camera or choose a photo."); $("checkResult").textContent="";
+  if(selectedImage) await showImage(selectedImage);
+}
+$("start").addEventListener("click",async()=>{
+  try {
+    if(!navigator.mediaDevices?.getUserMedia) throw new Error("Camera access needs HTTPS and a supported browser. Use photo upload instead.");
+    stream=await navigator.mediaDevices.getUserMedia({video:{facingMode:{ideal:"environment"},width:{ideal:640},height:{ideal:640}},audio:false});
+    $("video").srcObject=stream; await $("video").play();
+    $("video").hidden=false; $("photo").hidden=true; $("empty").hidden=true;
+    $("start").hidden=true; $("stop").hidden=false; running=true; requestAnimationFrame(cameraLoop);
+  } catch(error) { status("Camera unavailable: "+error.message+" You can still choose a photo.",true); stopCamera(); }
+});
+$("stop").addEventListener("click",()=>{stopCamera();status("Camera stopped.");});
+$("upload").addEventListener("change",async event=>{
+  try { const file=event.target.files[0]; if(file) await showImage(await imageFromBlob(file)); }
+  catch(error) { status(error.message,true); }
+});
+$("check").addEventListener("click",async()=>{
+  $("check").disabled=true;
+  try {
+    const response=await fetch("check_image.jpg"); if(!response.ok) throw new Error("Check image unavailable.");
+    const probabilities=await showImage(await imageFromBlob(await response.blob()));
+    const lines=info.classes.map((name,i)=>`${name}: browser ${probabilities[i].toFixed(6)} · notebook ${expected[name].toFixed(6)}`);
+    const difference=Math.max(...probabilities.map((p,i)=>Math.abs(p-expected[info.classes[i]])));
+    const matches=probabilities.every((p,i)=>p.toFixed(3)===expected[info.classes[i]].toFixed(3));
+    $("checkResult").textContent=(matches ? "PASS: all classes agree to three decimals." : "CHECK: some rounded probabilities differ.")+"\n"+lines.join("\n")+"\nMaximum absolute difference: "+difference.toExponential(3);
+  } catch(error) { $("checkResult").textContent="Check failed: "+error.message; }
+  finally { $("check").disabled=false; }
+});
+$("model").addEventListener("change",()=>loadModel().catch(error=>status(error.message,true)));
+window.addEventListener("pagehide",stopCamera);
+document.addEventListener("visibilitychange",()=>{if(document.hidden)stopCamera();});
+loadModel().catch(error=>status("Unable to load the classifier: "+error.message+" Check your connection and reload.",true));
+</script>
+</body>
+</html>

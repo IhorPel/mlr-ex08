@@ -1,0 +1,42 @@
+{
+  "batch1_eta001": {
+    "epochs": 100,
+    "mean_half_mse": 0.05687683291090001,
+    "target_reached": true
+  },
+  "fullbatch_eta01": {
+    "epochs": 214,
+    "mean_half_mse": 0.05687955630605274,
+    "target_reached": true
+  },
+  "split_and_dropout": [
+    {
+      "split_seed": 0,
+      "dropout": 0.0,
+      "epochs": 300,
+      "best_validation_mse": 0.03217478469014168,
+      "best_epoch": 271
+    },
+    {
+      "split_seed": 1,
+      "dropout": 0.0,
+      "epochs": 300,
+      "best_validation_mse": 0.14494138956069946,
+      "best_epoch": 201
+    },
+    {
+      "split_seed": 2,
+      "dropout": 0.0,
+      "epochs": 300,
+      "best_validation_mse": 0.032231248915195465,
+      "best_epoch": 120
+    },
+    {
+      "split_seed": 0,
+      "dropout": 0.2,
+      "epochs": 300,
+      "best_validation_mse": 0.03444383293390274,
+      "best_epoch": 157
+    }
+  ]
+}

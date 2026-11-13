@@ -1,0 +1,22 @@
+{
+  "maximum_probability_difference": 4.507601261138916e-07,
+  "torch": {
+    "apple": 0.9506519436836243,
+    "cherry": 0.049347467720508575,
+    "chestnut": 1.33958906189946e-07,
+    "maple": 4.1138792994388496e-07
+  },
+  "onnx": {
+    "apple": 0.9506515264511108,
+    "cherry": 0.04934791848063469,
+    "chestnut": 1.33959105141912e-07,
+    "maple": 4.11388526799783e-07
+  },
+  "model": "leaf_model.onnx",
+  "checkpoint_variant": {
+    "name": "demo_mobilenet",
+    "transfer": "fine"
+  },
+  "epoch": 15,
+  "seed": 0
+}

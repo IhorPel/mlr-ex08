@@ -1,0 +1,13 @@
+{
+  "device": "cpu",
+  "torch": "2.15.0+cpu",
+  "single_sample_final_half_mse": 0.056876832910900024,
+  "batched_final_half_mse": 0.05299713897353633,
+  "module_final_half_mse": 0.05299713645751278,
+  "sgd_final_mse": 0.1059942710523804,
+  "adam_final_mse": 0.09909657910466194,
+  "saved_and_loaded_predictions_equal": true,
+  "best_validation_mse": 0.03373038023710251,
+  "best_validation_epoch": 100,
+  "note": "CPU-only environment; GPU demonstrations are conditional and were not measured"
+}

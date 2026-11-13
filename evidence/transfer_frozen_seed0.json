@@ -1,0 +1,70 @@
+{
+  "variant": "transfer_frozen",
+  "seed": 0,
+  "epochs": 15,
+  "selected_epoch": 15,
+  "validation_accuracy": 0.8583333333333333,
+  "camera_accuracy": 0.8083333333333333,
+  "validation_balanced_accuracy": 0.8583333333333334,
+  "camera_balanced_accuracy": 0.8083333333333333,
+  "train_images": 700,
+  "validation_images": 120,
+  "parameters": 1521956,
+  "clean_confusion": [
+    [
+      22,
+      8,
+      0,
+      0
+    ],
+    [
+      4,
+      24,
+      0,
+      2
+    ],
+    [
+      0,
+      1,
+      29,
+      0
+    ],
+    [
+      1,
+      1,
+      0,
+      28
+    ]
+  ],
+  "camera_confusion": [
+    [
+      19,
+      10,
+      0,
+      1
+    ],
+    [
+      3,
+      25,
+      1,
+      1
+    ],
+    [
+      0,
+      2,
+      27,
+      1
+    ],
+    [
+      0,
+      3,
+      1,
+      26
+    ]
+  ],
+  "phase": "transfer_comparison",
+  "config": {
+    "name": "transfer_frozen",
+    "transfer": "frozen"
+  }
+}

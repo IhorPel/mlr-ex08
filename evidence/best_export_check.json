@@ -1,0 +1,26 @@
+{
+  "maximum_probability_difference": 5.966285243630409e-10,
+  "torch": {
+    "apple": 0.9999369382858276,
+    "cherry": 6.17944315308705e-05,
+    "chestnut": 7.348701558385073e-08,
+    "maple": 1.217137082676345e-06
+  },
+  "onnx": {
+    "apple": 0.9999369382858276,
+    "cherry": 6.179502815939486e-05,
+    "chestnut": 7.348842245846754e-08,
+    "maple": 1.2171602747912402e-06
+  },
+  "model": "best_leaf_model.onnx",
+  "checkpoint_variant": {
+    "name": "transfer_aug_cosine_30",
+    "transfer": "fine",
+    "geometric": true,
+    "colour": true,
+    "scheduler": true,
+    "best_epoch": true
+  },
+  "epoch": 11,
+  "seed": 0
+}

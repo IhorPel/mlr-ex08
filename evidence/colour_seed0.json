@@ -1,0 +1,70 @@
+{
+  "variant": "colour",
+  "seed": 0,
+  "epochs": 15,
+  "selected_epoch": 15,
+  "validation_accuracy": 0.8416666666666667,
+  "camera_accuracy": 0.7,
+  "validation_balanced_accuracy": 0.8416666666666668,
+  "camera_balanced_accuracy": 0.7000000000000001,
+  "train_images": 700,
+  "validation_images": 120,
+  "parameters": 208292,
+  "clean_confusion": [
+    [
+      23,
+      6,
+      0,
+      1
+    ],
+    [
+      5,
+      23,
+      0,
+      2
+    ],
+    [
+      0,
+      0,
+      27,
+      3
+    ],
+    [
+      0,
+      2,
+      0,
+      28
+    ]
+  ],
+  "camera_confusion": [
+    [
+      24,
+      4,
+      0,
+      2
+    ],
+    [
+      16,
+      11,
+      0,
+      3
+    ],
+    [
+      2,
+      1,
+      23,
+      4
+    ],
+    [
+      1,
+      0,
+      3,
+      26
+    ]
+  ],
+  "phase": "single_change",
+  "config": {
+    "name": "colour",
+    "colour": true
+  }
+}

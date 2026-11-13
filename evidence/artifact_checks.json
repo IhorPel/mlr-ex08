@@ -1,0 +1,10 @@
+{
+  "passed": true,
+  "measured_rows": 22,
+  "same_training_and_validation_counts": true,
+  "three_seeds_for_important_rows": true,
+  "onnx_metadata_matches_json": true,
+  "native_onnx_matches_pytorch": true,
+  "task3_placeholders_replaced": true,
+  "physical_phone_test": "Requires student verification; not performed by the agent"
+}

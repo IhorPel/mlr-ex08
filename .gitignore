@@ -1,0 +1,12 @@
+.venv/
+.cache/
+.pytest_cache/
+pytest-cache-files-*/
+__pycache__/
+data/
+checkpoints/
+*.pt
+*.pth
+runs/
+*.zip
+*.part

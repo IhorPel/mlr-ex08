@@ -1,0 +1,74 @@
+{
+  "variant": "transfer_aug_cosine_30",
+  "seed": 0,
+  "epochs": 30,
+  "selected_epoch": 11,
+  "validation_accuracy": 0.9083333333333333,
+  "camera_accuracy": 0.9083333333333333,
+  "validation_balanced_accuracy": 0.9083333333333334,
+  "camera_balanced_accuracy": 0.9083333333333334,
+  "train_images": 700,
+  "validation_images": 120,
+  "parameters": 1521956,
+  "clean_confusion": [
+    [
+      27,
+      2,
+      0,
+      1
+    ],
+    [
+      6,
+      24,
+      0,
+      0
+    ],
+    [
+      0,
+      0,
+      30,
+      0
+    ],
+    [
+      0,
+      2,
+      0,
+      28
+    ]
+  ],
+  "camera_confusion": [
+    [
+      24,
+      5,
+      0,
+      1
+    ],
+    [
+      4,
+      26,
+      0,
+      0
+    ],
+    [
+      0,
+      0,
+      30,
+      0
+    ],
+    [
+      0,
+      1,
+      0,
+      29
+    ]
+  ],
+  "phase": "combination",
+  "config": {
+    "name": "transfer_aug_cosine_30",
+    "transfer": "fine",
+    "geometric": true,
+    "colour": true,
+    "scheduler": true,
+    "best_epoch": true
+  }
+}

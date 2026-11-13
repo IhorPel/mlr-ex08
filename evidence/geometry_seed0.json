@@ -1,0 +1,70 @@
+{
+  "variant": "geometry",
+  "seed": 0,
+  "epochs": 15,
+  "selected_epoch": 15,
+  "validation_accuracy": 0.875,
+  "camera_accuracy": 0.7,
+  "validation_balanced_accuracy": 0.875,
+  "camera_balanced_accuracy": 0.7,
+  "train_images": 700,
+  "validation_images": 120,
+  "parameters": 208292,
+  "clean_confusion": [
+    [
+      27,
+      2,
+      0,
+      1
+    ],
+    [
+      7,
+      20,
+      0,
+      3
+    ],
+    [
+      0,
+      0,
+      30,
+      0
+    ],
+    [
+      0,
+      0,
+      2,
+      28
+    ]
+  ],
+  "camera_confusion": [
+    [
+      23,
+      6,
+      1,
+      0
+    ],
+    [
+      12,
+      15,
+      1,
+      2
+    ],
+    [
+      3,
+      0,
+      25,
+      2
+    ],
+    [
+      2,
+      5,
+      2,
+      21
+    ]
+  ],
+  "phase": "single_change",
+  "config": {
+    "name": "geometry",
+    "geometric": true
+  }
+}

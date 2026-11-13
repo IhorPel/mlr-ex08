@@ -1,0 +1,70 @@
+{
+  "variant": "adamw",
+  "seed": 0,
+  "epochs": 15,
+  "selected_epoch": 15,
+  "validation_accuracy": 0.825,
+  "camera_accuracy": 0.6416666666666667,
+  "validation_balanced_accuracy": 0.825,
+  "camera_balanced_accuracy": 0.6416666666666666,
+  "train_images": 700,
+  "validation_images": 120,
+  "parameters": 208292,
+  "clean_confusion": [
+    [
+      25,
+      3,
+      0,
+      2
+    ],
+    [
+      9,
+      20,
+      0,
+      1
+    ],
+    [
+      1,
+      0,
+      27,
+      2
+    ],
+    [
+      0,
+      0,
+      3,
+      27
+    ]
+  ],
+  "camera_confusion": [
+    [
+      27,
+      1,
+      1,
+      1
+    ],
+    [
+      18,
+      9,
+      0,
+      3
+    ],
+    [
+      4,
+      0,
+      21,
+      5
+    ],
+    [
+      6,
+      0,
+      4,
+      20
+    ]
+  ],
+  "phase": "single_change",
+  "config": {
+    "name": "adamw",
+    "adamw": true
+  }
+}

@@ -1,0 +1,71 @@
+{
+  "variant": "transfer_geometry",
+  "seed": 0,
+  "epochs": 15,
+  "selected_epoch": 15,
+  "validation_accuracy": 0.8916666666666667,
+  "camera_accuracy": 0.8833333333333333,
+  "validation_balanced_accuracy": 0.8916666666666667,
+  "camera_balanced_accuracy": 0.8833333333333333,
+  "train_images": 700,
+  "validation_images": 120,
+  "parameters": 1521956,
+  "clean_confusion": [
+    [
+      24,
+      6,
+      0,
+      0
+    ],
+    [
+      6,
+      24,
+      0,
+      0
+    ],
+    [
+      0,
+      0,
+      30,
+      0
+    ],
+    [
+      0,
+      0,
+      1,
+      29
+    ]
+  ],
+  "camera_confusion": [
+    [
+      25,
+      5,
+      0,
+      0
+    ],
+    [
+      6,
+      23,
+      0,
+      1
+    ],
+    [
+      0,
+      0,
+      30,
+      0
+    ],
+    [
+      1,
+      1,
+      0,
+      28
+    ]
+  ],
+  "phase": "transfer_comparison",
+  "config": {
+    "name": "transfer_geometry",
+    "transfer": "fine",
+    "geometric": true
+  }
+}

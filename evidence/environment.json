@@ -1,0 +1,28 @@
+{
+  "python": "3.14.4",
+  "platform": "Windows",
+  "packages": {
+    "torch": "2.15.0+cpu",
+    "torchvision": "0.29.2+cpu",
+    "numpy": "2.5.4",
+    "matplotlib": "3.11.2",
+    "pillow": "13.0.0",
+    "scikit-learn": "1.8.0",
+    "onnx": "1.23.2",
+    "onnxruntime": "1.32.0",
+    "onnxscript": "0.7.2",
+    "gdown": "6.5.1",
+    "qrcode": "8.2",
+    "pytest": "9.2.0"
+  },
+  "experiment_threads": 4,
+  "cuda_available": false,
+  "training_device": "cpu",
+  "initialization_and_shuffle_seeds": [
+    0,
+    1,
+    2
+  ],
+  "fixed_camera_validation_seed": 123,
+  "browser_runtime": "onnxruntime-web 1.23.2, WASM, one thread"
+}

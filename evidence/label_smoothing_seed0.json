@@ -1,0 +1,70 @@
+{
+  "variant": "label_smoothing",
+  "seed": 0,
+  "epochs": 15,
+  "selected_epoch": 15,
+  "validation_accuracy": 0.8083333333333333,
+  "camera_accuracy": 0.6333333333333333,
+  "validation_balanced_accuracy": 0.8083333333333333,
+  "camera_balanced_accuracy": 0.6333333333333333,
+  "train_images": 700,
+  "validation_images": 120,
+  "parameters": 208292,
+  "clean_confusion": [
+    [
+      25,
+      4,
+      0,
+      1
+    ],
+    [
+      8,
+      20,
+      0,
+      2
+    ],
+    [
+      1,
+      0,
+      27,
+      2
+    ],
+    [
+      2,
+      1,
+      2,
+      25
+    ]
+  ],
+  "camera_confusion": [
+    [
+      28,
+      1,
+      1,
+      0
+    ],
+    [
+      19,
+      10,
+      1,
+      0
+    ],
+    [
+      7,
+      0,
+      19,
+      4
+    ],
+    [
+      6,
+      1,
+      4,
+      19
+    ]
+  ],
+  "phase": "single_change",
+  "config": {
+    "name": "label_smoothing",
+    "label_smoothing": 0.1
+  }
+}

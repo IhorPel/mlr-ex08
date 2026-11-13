@@ -1,0 +1,71 @@
+{
+  "variant": "transfer_cosine",
+  "seed": 0,
+  "epochs": 15,
+  "selected_epoch": 15,
+  "validation_accuracy": 0.925,
+  "camera_accuracy": 0.875,
+  "validation_balanced_accuracy": 0.925,
+  "camera_balanced_accuracy": 0.875,
+  "train_images": 700,
+  "validation_images": 120,
+  "parameters": 1521956,
+  "clean_confusion": [
+    [
+      26,
+      4,
+      0,
+      0
+    ],
+    [
+      5,
+      25,
+      0,
+      0
+    ],
+    [
+      0,
+      0,
+      30,
+      0
+    ],
+    [
+      0,
+      0,
+      0,
+      30
+    ]
+  ],
+  "camera_confusion": [
+    [
+      25,
+      5,
+      0,
+      0
+    ],
+    [
+      7,
+      22,
+      0,
+      1
+    ],
+    [
+      2,
+      0,
+      28,
+      0
+    ],
+    [
+      0,
+      0,
+      0,
+      30
+    ]
+  ],
+  "phase": "transfer_comparison",
+  "config": {
+    "name": "transfer_cosine",
+    "transfer": "fine",
+    "scheduler": true
+  }
+}

@@ -1,0 +1,69 @@
+{
+  "variant": "baseline",
+  "seed": 0,
+  "epochs": 15,
+  "selected_epoch": 15,
+  "validation_accuracy": 0.8416666666666667,
+  "camera_accuracy": 0.6333333333333333,
+  "validation_balanced_accuracy": 0.8416666666666667,
+  "camera_balanced_accuracy": 0.6333333333333333,
+  "train_images": 700,
+  "validation_images": 120,
+  "parameters": 208292,
+  "clean_confusion": [
+    [
+      25,
+      4,
+      0,
+      1
+    ],
+    [
+      8,
+      21,
+      0,
+      1
+    ],
+    [
+      0,
+      0,
+      28,
+      2
+    ],
+    [
+      0,
+      1,
+      2,
+      27
+    ]
+  ],
+  "camera_confusion": [
+    [
+      25,
+      3,
+      1,
+      1
+    ],
+    [
+      20,
+      9,
+      0,
+      1
+    ],
+    [
+      4,
+      0,
+      21,
+      5
+    ],
+    [
+      5,
+      3,
+      1,
+      21
+    ]
+  ],
+  "phase": "baseline",
+  "config": {
+    "name": "baseline"
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "variant": "transfer_aug_cosine_30",
+  "checkpoint_seed": 0,
+  "rule": "Choose between the repeated baseline and seed-0 winning candidate by mean camera-like validation accuracy; export seed 0 without choosing the best seed",
+  "camera_means": {
+    "baseline": 0.6333333333333333,
+    "transfer_aug_cosine_30": 0.9194444444444446
+  },
+  "data_source": "historical archive supplied by user",
+  "physical_phone_test": "Not performed by the agent; requires the user's device"
+}

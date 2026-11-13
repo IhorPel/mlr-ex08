@@ -1,0 +1,22 @@
+{
+  "source": "User-supplied historical course archive, not the current-group Drive ZIP",
+  "url": "https://raw.githubusercontent.com/tomasvicar/MLR-public/master/exercises/data/ex08_leaves_images.zip",
+  "zip_sha256": "f7bbaa9aa161bd1c334e2fe3fe8b5e93af216ff1664f2571d3572eace555cf53",
+  "class_counts": {
+    "train": {
+      "apple": 175,
+      "cherry": 175,
+      "chestnut": 175,
+      "maple": 175
+    },
+    "val": {
+      "apple": 30,
+      "cherry": 30,
+      "chestnut": 30,
+      "maple": 30
+    }
+  },
+  "camera_validation_seed": 123,
+  "camera_validation": "one saved crop/rotation/colour perturbation per validation image",
+  "limitation": "Historical archive used as primary data at user's request; not an independent current-group comparison"
+}

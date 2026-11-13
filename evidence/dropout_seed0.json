@@ -1,0 +1,70 @@
+{
+  "variant": "dropout",
+  "seed": 0,
+  "epochs": 15,
+  "selected_epoch": 15,
+  "validation_accuracy": 0.825,
+  "camera_accuracy": 0.6416666666666667,
+  "validation_balanced_accuracy": 0.8250000000000001,
+  "camera_balanced_accuracy": 0.6416666666666666,
+  "train_images": 700,
+  "validation_images": 120,
+  "parameters": 208292,
+  "clean_confusion": [
+    [
+      25,
+      4,
+      0,
+      1
+    ],
+    [
+      8,
+      20,
+      1,
+      1
+    ],
+    [
+      1,
+      0,
+      28,
+      1
+    ],
+    [
+      0,
+      0,
+      4,
+      26
+    ]
+  ],
+  "camera_confusion": [
+    [
+      23,
+      5,
+      1,
+      1
+    ],
+    [
+      18,
+      9,
+      1,
+      2
+    ],
+    [
+      4,
+      0,
+      26,
+      0
+    ],
+    [
+      2,
+      3,
+      6,
+      19
+    ]
+  ],
+  "phase": "single_change",
+  "config": {
+    "name": "dropout",
+    "dropout": 0.3
+  }
+}

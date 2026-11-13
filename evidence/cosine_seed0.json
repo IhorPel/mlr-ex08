@@ -1,0 +1,70 @@
+{
+  "variant": "cosine",
+  "seed": 0,
+  "epochs": 15,
+  "selected_epoch": 15,
+  "validation_accuracy": 0.8166666666666667,
+  "camera_accuracy": 0.625,
+  "validation_balanced_accuracy": 0.8166666666666668,
+  "camera_balanced_accuracy": 0.625,
+  "train_images": 700,
+  "validation_images": 120,
+  "parameters": 208292,
+  "clean_confusion": [
+    [
+      25,
+      4,
+      0,
+      1
+    ],
+    [
+      9,
+      20,
+      0,
+      1
+    ],
+    [
+      1,
+      0,
+      28,
+      1
+    ],
+    [
+      0,
+      1,
+      4,
+      25
+    ]
+  ],
+  "camera_confusion": [
+    [
+      25,
+      4,
+      1,
+      0
+    ],
+    [
+      17,
+      11,
+      0,
+      2
+    ],
+    [
+      4,
+      0,
+      22,
+      4
+    ],
+    [
+      3,
+      7,
+      3,
+      17
+    ]
+  ],
+  "phase": "single_change",
+  "config": {
+    "name": "cosine",
+    "scheduler": true
+  }
+}

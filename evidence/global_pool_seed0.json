@@ -1,0 +1,70 @@
+{
+  "variant": "global_pool",
+  "seed": 0,
+  "epochs": 15,
+  "selected_epoch": 15,
+  "validation_accuracy": 0.6666666666666666,
+  "camera_accuracy": 0.5833333333333334,
+  "validation_balanced_accuracy": 0.6666666666666666,
+  "camera_balanced_accuracy": 0.5833333333333333,
+  "train_images": 700,
+  "validation_images": 120,
+  "parameters": 64932,
+  "clean_confusion": [
+    [
+      19,
+      9,
+      0,
+      2
+    ],
+    [
+      7,
+      16,
+      1,
+      6
+    ],
+    [
+      0,
+      0,
+      27,
+      3
+    ],
+    [
+      0,
+      0,
+      12,
+      18
+    ]
+  ],
+  "camera_confusion": [
+    [
+      19,
+      8,
+      1,
+      2
+    ],
+    [
+      11,
+      12,
+      1,
+      6
+    ],
+    [
+      2,
+      0,
+      24,
+      4
+    ],
+    [
+      0,
+      2,
+      13,
+      15
+    ]
+  ],
+  "phase": "single_change",
+  "config": {
+    "name": "global_pool",
+    "global_pool": true
+  }
+}

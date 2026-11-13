@@ -1,0 +1,70 @@
+{
+  "variant": "batchnorm",
+  "seed": 0,
+  "epochs": 15,
+  "selected_epoch": 15,
+  "validation_accuracy": 0.8333333333333334,
+  "camera_accuracy": 0.7,
+  "validation_balanced_accuracy": 0.8333333333333335,
+  "camera_balanced_accuracy": 0.7,
+  "train_images": 700,
+  "validation_images": 120,
+  "parameters": 208644,
+  "clean_confusion": [
+    [
+      25,
+      4,
+      0,
+      1
+    ],
+    [
+      9,
+      19,
+      0,
+      2
+    ],
+    [
+      0,
+      0,
+      28,
+      2
+    ],
+    [
+      0,
+      1,
+      1,
+      28
+    ]
+  ],
+  "camera_confusion": [
+    [
+      25,
+      4,
+      0,
+      1
+    ],
+    [
+      13,
+      14,
+      1,
+      2
+    ],
+    [
+      3,
+      1,
+      21,
+      5
+    ],
+    [
+      1,
+      4,
+      1,
+      24
+    ]
+  ],
+  "phase": "single_change",
+  "config": {
+    "name": "batchnorm",
+    "batch_norm": true
+  }
+}

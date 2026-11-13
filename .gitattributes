@@ -1,0 +1,7 @@
+* text=auto eol=lf
+*.csv -text
+*.json -text whitespace=cr-at-eol
+*.ipynb -text whitespace=cr-at-eol
+*.onnx binary
+*.jpg binary
+*.png binary

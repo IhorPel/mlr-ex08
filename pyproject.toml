@@ -1,0 +1,34 @@
+[project]
+name = "mlr-ex08"
+version = "0.1.0"
+description = "Exercise 8: readable PyTorch leaf classifiers and phone inference"
+requires-python = ">=3.14,<3.15"
+dependencies = [
+  "torch>=2.9,<3",
+  "torchvision>=0.24,<1",
+  "numpy>=2.3,<3",
+  "matplotlib>=3.10,<4",
+  "pillow>=12,<14",
+  "scikit-learn>=1.7,<1.9",
+  "onnx>=1.19,<2",
+  "onnxscript>=0.5,<1",
+  "onnxruntime>=1.23,<2",
+  "gdown>=6,<7",
+  "pytest>=9,<10",
+  "qrcode>=8,<9",
+]
+
+[tool.uv]
+package = false
+
+[[tool.uv.index]]
+name = "pytorch-cpu"
+url = "https://download.pytorch.org/whl/cpu"
+explicit = true
+
+[tool.uv.sources]
+torch = { index = "pytorch-cpu" }
+torchvision = { index = "pytorch-cpu" }
+
+[tool.pytest.ini_options]
+testpaths = ["test_pipeline.py"]

@@ -1,0 +1,71 @@
+{
+  "variant": "bn_geometry",
+  "seed": 0,
+  "epochs": 15,
+  "selected_epoch": 15,
+  "validation_accuracy": 0.7916666666666666,
+  "camera_accuracy": 0.725,
+  "validation_balanced_accuracy": 0.7916666666666666,
+  "camera_balanced_accuracy": 0.725,
+  "train_images": 700,
+  "validation_images": 120,
+  "parameters": 208644,
+  "clean_confusion": [
+    [
+      29,
+      1,
+      0,
+      0
+    ],
+    [
+      10,
+      18,
+      0,
+      2
+    ],
+    [
+      0,
+      0,
+      30,
+      0
+    ],
+    [
+      1,
+      0,
+      11,
+      18
+    ]
+  ],
+  "camera_confusion": [
+    [
+      25,
+      5,
+      0,
+      0
+    ],
+    [
+      8,
+      21,
+      0,
+      1
+    ],
+    [
+      0,
+      3,
+      27,
+      0
+    ],
+    [
+      5,
+      6,
+      5,
+      14
+    ]
+  ],
+  "phase": "task3_combination",
+  "config": {
+    "name": "bn_geometry",
+    "batch_norm": true,
+    "geometric": true
+  }
+}
