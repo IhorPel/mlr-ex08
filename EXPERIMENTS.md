@@ -70,3 +70,7 @@ Recorded training wall time across actual runs: 5274.5 seconds. Per-run values a
 ## Remaining student checks
 
 Open the deployed URL on an actual Android phone or iPhone, test the rear camera, and take the required screenshot yourself. Confirm check_image.jpg probabilities in the browser. Try the Task 4 candidate in the course camera app if required. Write REVIEW.md and REPORT.md in your own words after checking the code and judging the results. A desktop-browser test cannot establish physical iPhone camera behavior.
+
+## Deployed browser check
+
+Both models passed the live page's check to three decimal places. Maximum absolute differences from notebook probabilities were 6.645e-07 for the demo and 2.385e-08 for the candidate. An actual file-chooser upload of check_image.jpg succeeded. The phone-width layout had no horizontal overflow. The QR payload matches the live Pages URL. Evidence is in evidence/browser_check.json and browser_check.jpg. These checks do not substitute for the student's physical-phone camera test and screenshot.

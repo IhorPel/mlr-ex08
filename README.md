@@ -34,6 +34,14 @@ probabilities are checked against PyTorch in `evidence/demo_export_check.json`.
 The live browser parity check is a separate verification. ONNX Runtime Web 1.23.2
 is loaded from a pinned jsDelivr URL and uses one WASM thread for Safari support.
 
+The deployed page was verified in the in-app browser. Both exports agree with
+their notebook probabilities to three decimals; maximum absolute differences are
+6.645e-7 for the demo and 2.385e-8 for the selected candidate. A real file-chooser
+upload of check_image.jpg worked. A measured 375-pixel CSS viewport had no horizontal
+overflow. See `evidence/browser_check.json` and `browser_check.jpg`. This is browser
+verification, not a physical Android/iPhone camera test or the student's required
+phone screenshot. The QR's encoded URL matches GitHub Pages' published URL.
+
 Task 3's placeholders are replaced with a readable Dataset, four-convolution
 network, explicit training loop, geometric augmentation and batch normalization.
 The Dataset is tested against ImageFolder. The notebook's plain CNN and the

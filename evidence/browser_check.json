@@ -1,0 +1,19 @@
+{
+  "url": "https://ihorpel.github.io/mlr-ex08/",
+  "browser": "Codex in-app browser",
+  "demo": {
+    "three_decimal_agreement": true,
+    "maximum_absolute_probability_difference": 6.645e-7,
+    "browser_probabilities": {"apple": 0.950653, "cherry": 0.049347, "chestnut": 0.0, "maple": 0.0}
+  },
+  "selected_candidate": {
+    "three_decimal_agreement": true,
+    "maximum_absolute_probability_difference": 2.385e-8,
+    "browser_probabilities": {"apple": 0.999937, "cherry": 0.000062, "chestnut": 0.0, "maple": 0.000001}
+  },
+  "actual_file_chooser_upload": "check_image.jpg selected and processed locally",
+  "responsive_layout": {"measured_css_viewport_width": 375, "document_scroll_width": 375, "horizontal_overflow": false, "viewport_reset_after_check": true},
+  "qr_payload_matches_pages_url": true,
+  "screenshot": "browser_check.jpg",
+  "physical_android_or_iphone_camera_test": "Not performed; requires the student and their device"
+}

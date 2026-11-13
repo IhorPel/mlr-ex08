@@ -90,6 +90,15 @@ def main():
         "required screenshot yourself. Confirm check_image.jpg probabilities in the browser. Try the Task 4 "
         "candidate in the course camera app if required. Write REVIEW.md and REPORT.md in your own words "
         "after checking the code and judging the results. A desktop-browser test cannot establish physical iPhone camera behavior.\n")
+    if (evidence / "browser_check.json").exists():
+        browser = json.loads((evidence / "browser_check.json").read_text(encoding="utf-8"))
+        doc += ("\n## Deployed browser check\n\n"
+                "Both models passed the live page's check to three decimal places. "
+                f"Maximum absolute differences from notebook probabilities were {browser['demo']['maximum_absolute_probability_difference']:.3e} "
+                f"for the demo and {browser['selected_candidate']['maximum_absolute_probability_difference']:.3e} for the candidate. "
+                "An actual file-chooser upload of check_image.jpg succeeded. The phone-width layout had no horizontal overflow. "
+                "The QR payload matches the live Pages URL. Evidence is in evidence/browser_check.json and browser_check.jpg. "
+                "These checks do not substitute for the student's physical-phone camera test and screenshot.\n")
     (ROOT / "EXPERIMENTS.md").write_text(doc, encoding="utf-8")
     # Scientific result plots: no claim of extra independent validation data.
     seed0 = [r for r in rows if r["seed"] == "0"]
@@ -98,7 +107,8 @@ def main():
     ax.barh(y-.16, [float(r["validation_accuracy"]) for r in seed0], height=.3, label="Clean validation", color="#215d46")
     ax.barh(y+.16, [float(r["camera_accuracy"]) for r in seed0], height=.3, label="Camera-like validation", color="#acb978")
     ax.set(yticks=y, yticklabels=[r["variant"] for r in seed0], xlabel="Accuracy", xlim=(0,1), title="Same 120 validation images: clean and fixed perturbations (seed 0)")
-    ax.invert_yaxis(); ax.legend(loc="lower right"); fig.tight_layout(); fig.savefig(ROOT / "comparison.png", dpi=150); plt.close(fig)
+    ax.invert_yaxis(); ax.legend(loc="upper center", bbox_to_anchor=(.5,-.12), ncol=2)
+    fig.tight_layout(); fig.savefig(ROOT / "comparison.png", dpi=150); plt.close(fig)
     fig, axes = plt.subplots(1,2, figsize=(11,4.2))
     for name in dict.fromkeys(["baseline", "bn_geometry", "demo_mobilenet", chosen]):
         history = histories[f"{name}_seed0"]
