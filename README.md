@@ -56,8 +56,10 @@ The page's model selector lets you compare the original Task 2 demo with that
 Task 4 candidate.
 
 `EXPERIMENTS.md`, `experiment_report.html`, `results.csv`, `comparison.png` and
-`learning_curves.png` contain the measured evidence. `REVIEW.md` and `REPORT.md`
-are intentionally left for the student's own device check and interpretation.
+`learning_curves.png` contain the measured evidence. Drafts of `REVIEW.md` and
+`REPORT.md` are included from the saved evidence. Their physical-phone checks and
+acceptance of the historical dataset remain unresolved. They need the student's
+verification before the hand-in is complete.
 Do not treat the generated evidence as a claim that a physical phone was tested.
 
 ## Fresh-clone commands on Windows
